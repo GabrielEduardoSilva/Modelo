@@ -33,7 +33,7 @@ class MobileNetV2_unet(nn.Module):
         self._init_weights()
 
         if pre_trained is not None:
-            self.backbone.load_state_dict(torch.load(pre_trained))
+            self.backbone.load_state_dict(torch.load(pre_trained, map_location=torch.device('cpu')))
 
     def forward(self, x):
         for n in range(0, 2):
